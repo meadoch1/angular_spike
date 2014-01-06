@@ -1,0 +1,17 @@
+<% @form_name = "infoForm" %>
+<% @step_no = "2" %>
+<% @ng_controller = "UserInfoCtrl" %>
+
+<% content_for :ng_init do %>init('<%= @user.id %>')<% end %>
+
+<span ng-show="showForm()" >
+  <form name="<%= @form_name %>" novalidate>
+    <% @attributes.each do |field| %>
+    <div class="control-group">
+      <%= ng_input @field_types[field], "user", field.to_s, field.to_s %>
+    </div>
+    <% end %>
+
+    <input type="submit" value="Submit Personal Info" ng-disabled="!infoForm.$valid" ng-click="addUserInfo()">
+  </form>
+</span>

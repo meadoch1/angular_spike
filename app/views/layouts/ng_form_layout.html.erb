@@ -1,0 +1,22 @@
+<% content_for :embeded_layout do %>
+<h1>My Angular Spike</h1>
+<h2>Member Registration (Step <%= @step_no %> of n)</h2>
+<div ng-controller="<%= @ng_controller %>" <%= content_for?(:ng_init) ? "ng-init=" + yield(:ng_init) : '' %> >
+  <span ng-show="showForm()" >
+    <%= yield %>
+  </span>
+  <span ng-show="showSubmitting()" >
+    <%= content_for?(:ng_submitting) ? yield(:ng_submitting) : "Your information is being submitted..." %>
+  </span>
+  <span ng-show="showComplete()" >
+    <%= content_for?(:ng_complete) ? yield(:ng_complete) : "Your information has been saved" %>
+  </span>
+  <span ng-show="showError()" >
+    <%= content_for?(:ng_error) ? yield(:ng_error) : "There has been a problem creating your account.  Please contact support for details." %>
+  </span>
+</div>
+<% end %>
+
+
+
+<%= render :template => 'layouts/application' %>

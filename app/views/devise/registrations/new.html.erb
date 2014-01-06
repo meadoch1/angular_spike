@@ -1,0 +1,27 @@
+<% @form_name = "createForm" %>
+<% @step_no = "2" %>
+<% @ng_controller = "UserCreateCtrl" %>
+
+<% content_for :ng_complete do %>
+Your account has been created.  Please check your email for instructions on verifying your account.
+<% end %>
+
+<form name="<%= @form_name %>" novalidate>
+  <div class="control-group">
+    <%= ng_text "user", "username", 'ng-blur="checkUsername()" ng-focus="clearUniqueCheck()"' %>
+    <span ng-show="!user.isUsernameUnique" class="help-inline">Username is currently taken by another user. Please choose a different Username</span>
+  </div>
+  <div class="control-group">
+    <%= ng_password "user", "password", 'data-password-nomatch="user.username"' %>
+    <span ng-show="<%= @form_name %>.password.$error.passwordNomatch" class="help-inline">Passwords cannot be the same as Username.</span>
+  </div>
+  <div class="control-group">
+    <%= ng_password "user", "password_confirmation", 'data-password-verify="user.password"' %>
+    <span ng-show="<%= @form_name %>.password_confirmation.$error.passwordVerify" class="help-inline">Passwords don't match.</span>
+  </div>
+  <div class="control-group">
+    <%= ng_email 'user', 'email' %>
+  </div>
+
+  <input type="submit" value="Submit Registration" ng-disabled="!<%= @form_name %>.$valid" ng-click="addUser()">
+</form>
