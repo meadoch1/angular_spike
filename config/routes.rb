@@ -10,6 +10,7 @@ AngularSpike::Application.routes.draw do
   root :to => 'home#index'
   namespace :api do
     get 'registrations/unique' => 'registrations#unique'
+    get 'validations/fetch' => 'validations#fetch'
     resources :registrations
   end
 

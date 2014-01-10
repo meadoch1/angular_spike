@@ -8,6 +8,10 @@ class NgRequiredValidator < NgValidator
     "required"
   end
 
+  def input_value
+    nil
+  end
+
   def ng_show_attribute
     "required"
   end

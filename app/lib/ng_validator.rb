@@ -13,7 +13,15 @@ class NgValidator
     raise NotImplementedError.new 'This method needs to be overridden in a child class'
   end
   
+  def input_value
+    raise NotImplementedError.new 'This method needs to be overridden in a child class'
+  end
+
   def message
     @message
+  end
+  
+  def as_json(options={})
+    {input_attribute: input_attribute, input_value: input_value, show_attribute: ng_show_attribute, message: message}
   end
 end

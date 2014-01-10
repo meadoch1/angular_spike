@@ -7,8 +7,10 @@ Your account has been created.  Please check your email for instructions on veri
 <% end %>
 
 <form name="<%= @form_name %>" novalidate>
-  <div class="control-group">
-    <%= ng_text "user", "username", 'ng-blur="checkUsername()" ng-focus="clearUniqueCheck()"' %>
+  <div input-decorations="decorations"  >
+    <input type="text" ng-blur="checkUsername()" ng-focus="clearUniqueCheck()">
+<span ng-repeat="validation in decorations.validations[decorations.field_name]" input-validation="validation" form-name="decorations.form_name" field-name="decorations.field_name">{{validation.message}}</span>
+<span ng-repeat="validation in decorations.validations[decorations.field_name]" ng-show="checkValidation(validation)">{{validation.message}}</span>
     <span ng-show="!user.isUsernameUnique" class="help-inline">Username is currently taken by another user. Please choose a different Username</span>
   </div>
   <div class="control-group">

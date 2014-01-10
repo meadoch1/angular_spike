@@ -7,7 +7,11 @@ class NgPatternValidator < NgValidator
   end
 
   def input_attribute
-    "ng-pattern=\"/#{to_javascript_regex @pattern}/\""
+    "ng-pattern"
+  end
+
+  def input_value
+    to_javascript_regex @pattern
   end
 
   def ng_show_attribute

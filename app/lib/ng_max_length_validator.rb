@@ -8,7 +8,11 @@ class NgMaxLengthValidator < NgValidator
   end
 
   def input_attribute
-    "ng-maxlength=\"#{@maximum}\""
+    "ng-maxlength"
+  end
+
+  def input_value
+    @maximum
   end
 
   def ng_show_attribute

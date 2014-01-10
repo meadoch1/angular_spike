@@ -8,7 +8,11 @@ class NgMinLengthValidator < NgValidator
   end
 
   def input_attribute
-    "ng-minlength=\"#{@minimum}\""
+    "ng-minlength"
+  end
+
+  def input_value
+    @minimum
   end
 
   def ng_show_attribute
